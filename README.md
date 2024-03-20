@@ -30,3 +30,27 @@ const addButtonPost = {
 const localSym = computed(() => props.sym ? '+' : '-')
 const localNumber = ref(props.obj.num)
 ```
+
+## 事件
+子组件可以用@发布自定义事件
+```js
+<ElButton @click="$emit('changeNumber', 6)">{{localSym}}</ElButton>
+```
+父组件监听
+```js
+<addButton v-bind="addButtonPost" @change-number="changeNumberCallback"/>
+```
+参数
+```js
+const changeNumberCallback = (addNum) => {
+  addButtonPost.value.obj.num += addNum
+}
+```
+声明事件
+**$emit不能在template中使用**
+```js
+const emit = defineEmits(['changeNumber'])
+const buttonClick = () => {
+  emit('changeNumber', 6)
+}
+```

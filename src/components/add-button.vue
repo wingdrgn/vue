@@ -5,6 +5,10 @@
     </ElButton>
     {{ localNumber }}
 	</div>
+  <div>
+    <ElButton @click="$emit('changeNumber', 6)">{{localSym}}</ElButton>
+    number from above is: {{ props.obj.num }}
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -29,6 +33,10 @@ const localNumberPlus = () => {
   localNumber.value++
 }
 
+// const emit = defineEmits(['changeNumber'])
+// const buttonClick = () => {
+//   emit('changeNumber', 6)
+// }
 
 </script>
 
