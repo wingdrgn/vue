@@ -95,3 +95,49 @@ const [todoItemModel, modifiers] = defineModel('todo', {
   }
 })
 ```
+
+## fallthrough
+是传递给组件的属性或监听器 但未在props显式声明 例如class，style等
+
+```js
+<MyButton @click="onClick" />
+// 监听click器将被添加到 的根元素<MyButton>，即本机<button>元素。当点击native时<button>，会触发onClick父组件的方法。如果本机<button>已经有一个click与 绑定的侦听器v-on，则两个侦听器都会触发
+```
+嵌套组件转发属性不包括props，或v-on
+
+禁用属性继承
+```js
+defineOptions({
+  inheritAttrs: false
+})
+```
+
+\$attrs
+可以在模版通过$attrs获取所有fallthrough属性
+如果有多个跟节点，则需要显式绑定&attrs
+```js
+<header>...</header>
+<main v-bind="$attrs">...</main>
+<footer>...</footer>
+```
+
+js中访问fallthrough
+```js
+import { useAttrs } from 'vue'
+
+const attrs = useAttrs()
+console.log(attrs)
+//包括未使用的
+//Proxy(Object) {class: 'addButton', aaa: 1, __vInternal: 1}
+```
+
+
+
+
+
+
+
+
+
+问题：
+1. update:modelValue是v-model推荐写法，如果同时有model和propsemit会不兼容

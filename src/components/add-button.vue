@@ -15,12 +15,17 @@
 </template>
 
 <script setup lang="ts">
+defineOptions({
+  inheritAttrs: false
+})
 import { ElButton } from 'element-plus';
-import { ref, computed } from 'vue';
+import { ref, computed, useAttrs } from 'vue';
 // const props = defineProps(['sym'])
 // defineProps({
 //   sym: Boolean
 // })
+const attrs = useAttrs()
+console.log(attrs)
 interface addButtonObj {
   num: number
 }
@@ -36,9 +41,9 @@ const localNumberPlus = () => {
   localNumber.value++
 }
 
-const emit = defineEmits(['update:changeNumber'])
+const emit = defineEmits(['changeNumber'])
 const buttonClick = () => {
-  emit('update:changeNumber', 6)
+  emit('changeNumber', 6)
 }
 
 const [todoItemModel, modifiers] = defineModel('todo', {

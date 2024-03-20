@@ -2,7 +2,9 @@
     <div>
       <div>{{ currentTodoItem }}</div>
 
-      <addButton v-bind="addButtonPost" @change-number="changeNumberCallback"
+      <addButton 
+      class="addButton"
+      v-bind="addButtonPost" @change-number="changeNumberCallback"
       v-model:todo.capitalize="currentTodoItem"/>
     </div>
 </template>
@@ -13,7 +15,8 @@ const addButtonPost = ref({
   sym: true,
   obj: {
     num:0
-  }
+  },
+  aaa: 1
 })
 const currentTodoItem = ref('')
 
@@ -23,5 +26,7 @@ const changeNumberCallback = (addNum) => {
 </script>
 
 <style scoped>
-
+.addButton {
+  text-align: center;
+}
 </style>
