@@ -138,7 +138,16 @@ const routes: RouteRecordRaw[] = [
                     permiss: '2',
                 },
                 component: () => import(/* webpackChunkName: "import" */ '../views/import.vue'),
+          },
+          {
+            path: '/todo',
+            name: 'todo',
+            meta: {
+              title: 'todo',
+              permiss: '1',
             },
+            component: () => import(/* webpackChunkName: "import" */ '../views/todo.vue'),
+          },
         ],
     },
     {
