@@ -6,8 +6,11 @@
     {{ localNumber }}
 	</div>
   <div>
-    <ElButton @click="$emit('changeNumber', 6)">{{localSym}}</ElButton>
+    <ElButton @click="buttonClick">{{localSym}}</ElButton>
     number from above is: {{ props.obj.num }}
+  </div>
+  <div>
+    <input v-model="todoItemModel"/>
   </div>
 </template>
 
@@ -33,10 +36,22 @@ const localNumberPlus = () => {
   localNumber.value++
 }
 
-// const emit = defineEmits(['changeNumber'])
-// const buttonClick = () => {
-//   emit('changeNumber', 6)
-// }
+const emit = defineEmits(['update:changeNumber'])
+const buttonClick = () => {
+  emit('update:changeNumber', 6)
+}
+
+const [todoItemModel, modifiers] = defineModel('todo', {
+  default: '',
+  set(value) {
+    if (modifiers.capitalize) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+    return value
+  }
+})
+
+console.log(modifiers)
 
 </script>
 

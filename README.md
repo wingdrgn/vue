@@ -54,3 +54,44 @@ const buttonClick = () => {
   emit('changeNumber', 6)
 }
 ```
+
+## v-model
+推荐使用defineModel
+```js
+<addButton v-bind="addButtonPost" @change-number="changeNumberCallback"
+v-model="currentTodoItem"/>
+//child
+const todoItemModel = defineModel({ default: '' })
+```
+等价于
+```js
+const props = defineProps(['modelValue'])
+const emit = defineEmits(['update:modelValue'])
+
+ <input
+    :value="props.modelValue"
+    @input="emit('update:modelValue', $event.target.value)"
+  />
+```
+
+v-model参数
+```js
+v-model:todo="currentTodoItem"
+
+const todoItemModel = defineModel('todo',{ default: '' })
+```
+
+model modifier
+```js
+v-model:todo.capitalize="currentTodoItem"
+
+const [todoItemModel, modifiers] = defineModel('todo', {
+  default: '',
+  set(value) {
+    if (modifiers.capitalize) {
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+    return value
+  }
+})
+```

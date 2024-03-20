@@ -1,6 +1,9 @@
 <template>
     <div>
-      <addButton v-bind="addButtonPost" @change-number="changeNumberCallback"/>
+      <div>{{ currentTodoItem }}</div>
+
+      <addButton v-bind="addButtonPost" @change-number="changeNumberCallback"
+      v-model:todo.capitalize="currentTodoItem"/>
     </div>
 </template>
 
@@ -12,6 +15,7 @@ const addButtonPost = ref({
     num:0
   }
 })
+const currentTodoItem = ref('')
 
 const changeNumberCallback = (addNum) => {
   addButtonPost.value.obj.num += addNum
