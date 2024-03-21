@@ -14,6 +14,12 @@ app.use(router);
 
 app.component('addButton', addButton)
 
+app.directive('focus', {
+  mounted(el) {
+    el.focus()
+  }
+})
+
 // 注册elementplus图标
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component);

@@ -13,7 +13,7 @@
     number from above is: {{ props.obj.num }}
   </div>
   <div>
-    <input v-model="todoItemModel"/>
+    <input v-model="todoItemModel" v-focus/>
   </div>
 
   <slot name="footer">footer</slot>
@@ -25,6 +25,9 @@ defineOptions({
 })
 import { ElButton } from 'element-plus';
 import { ref, computed, useAttrs, inject } from 'vue';
+const vFocus = {
+  mounted: (el) => el.focus()
+}
 const { helloMessage, updateMessage } = inject('helloMessage', {} as helloMessage)
 // const props = defineProps(['sym'])
 // defineProps({
