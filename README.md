@@ -224,5 +224,25 @@ const { data, error } = useFetch(() => `/posts/${props.id}`)
 ```
 
 
+## 定制指令
+v开头驼峰命名
+```js
+const vFocus = {
+  mounted: (el) => el.focus()
+}
+```
+
+参数
+```js
+mounted(el, binding, vnode, prevVnode) {}
+//el 元素
+//binding{args, modifiers, value, oldValue}
+```
+
+
+## plugin
+
+
+
 问题：
 1. update:modelValue是v-model推荐写法，如果同时有model和propsemit会不兼容

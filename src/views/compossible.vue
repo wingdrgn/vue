@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ $translate('greeting.hello')}}
     Mouse position is at {{ x }}, {{ y }}
   </div> 
 </template>

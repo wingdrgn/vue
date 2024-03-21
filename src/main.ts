@@ -7,10 +7,16 @@ import { usePermissStore } from './store/permiss';
 import 'element-plus/dist/index.css';
 import './assets/css/icon.css';
 import addButton from './components/add-button.vue'
+import i18nPlugin from './plugins/i18n'
 
 const app = createApp(App);
 app.use(createPinia());
 app.use(router);
+app.use(i18nPlugin, {
+  greeting: {
+    hello: 'Bonjour!'
+  }
+})
 
 app.component('addButton', addButton)
 
