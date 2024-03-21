@@ -131,7 +131,46 @@ console.log(attrs)
 //Proxy(Object) {class: 'addButton', aaa: 1, __vInternal: 1}
 ```
 
+## slot
+组件可以接受js的props、模版内容要通过slot渲染
+包括：文本，元素，其他组件
+```js
+<addButton>
+  <h1>this is a slot</h1>//slot
+</addButton>
 
+<slot></slot>//等于
+<h1>this is a slot</h1>
+```
+
+默认内容
+```js
+<slot name="footer">footer</slot>
+```
+
+具名slot
+```js
+//没有name 默认是default
+<template #footer>
+  //<template v-slot:footer>
+  {{ currentTodoItem }}
+</template>
+//动态slot
+<template #[dynamicSlotName]>
+
+<slot name="footer">footer</slot>
+```
+
+范围slot
+槽内容访问子组件属性
+```js
+//child template
+<slot name="header" message="hello"></slot>
+
+<template #header="{message}">
+  {{ message }}
+</template>
+```
 
 
 

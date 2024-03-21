@@ -1,11 +1,16 @@
 <template>
     <div>
-      <div>{{ currentTodoItem }}</div>
-
       <addButton 
       class="addButton"
       v-bind="addButtonPost" @change-number="changeNumberCallback"
-      v-model:todo.capitalize="currentTodoItem"/>
+      v-model:todo.capitalize="currentTodoItem">
+      <template #header="{message}">
+        {{ message }}
+      </template>
+      <template #footer>
+        {{ currentTodoItem }}
+      </template>
+      </addButton>
     </div>
 </template>
 

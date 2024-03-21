@@ -1,4 +1,7 @@
 <template>
+  <div>
+      <slot name="header" message="hello"></slot>
+    </div>
 	<div class="tags">
 		<ElButton @click="localNumberPlus">
       {{localSym}}
@@ -12,6 +15,8 @@
   <div>
     <input v-model="todoItemModel"/>
   </div>
+
+  <slot name="footer">footer</slot>
 </template>
 
 <script setup lang="ts">
