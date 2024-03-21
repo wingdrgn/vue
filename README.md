@@ -1,4 +1,4 @@
-# 这是Vue-manage-system模版 我正在边学习边添加新的知识上去！
+# 这是Vue-manage-system模版 我正在边学习边添加新的知识
 
 ## 全局组件
 在main文件中
@@ -197,8 +197,31 @@ interface helloMessage {
 }
 ```
 
+异步组件
+需要时才加载，提高初始化速度
+```js
+const AsyncComp = defineAsyncComponent(() =>
+  //defineAsyncComponent接受一个返回 Promise 的加载器函数
+  import('./components/MyComponent.vue')
+)
+```
 
+## Composables
+类似于react hook
 
+如果有参数，变化需要重新use 用ref
+```js
+const url = ref('/initial-url')
+
+const { data, error } = useFetch(url)
+
+// this should trigger a re-fetch
+url.value = '/new-url'
+```
+或者用getter函数
+```js
+const { data, error } = useFetch(() => `/posts/${props.id}`)
+```
 
 
 问题：

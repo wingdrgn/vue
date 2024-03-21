@@ -148,6 +148,15 @@ const routes: RouteRecordRaw[] = [
             },
             component: () => import(/* webpackChunkName: "import" */ '../views/todo.vue'),
           },
+          {
+            path: '/comp',
+            name: 'comp',
+            meta: {
+              title: 'comp',
+              permiss: '101',
+            },
+            component: () => import(/* webpackChunkName: "import" */ '../views/compossible.vue'),
+          },
         ],
     },
     {
