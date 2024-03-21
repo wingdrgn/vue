@@ -173,6 +173,29 @@ console.log(attrs)
 ```
 
 
+## provide inject
+```js
+provide(/* key */'message', /* value */'hello')
+//key可以是string或者symbol
+//value可以是任意类型
+
+const helloMessage = inject('helloMessage', 'default hello')
+```
+
+更新provide数据
+provide提供更新函数
+```js
+provide(/* key */'helloMessage', /* value */{
+  helloMessage,
+  updateMessage
+})
+
+const { helloMessage, updateMessage } = inject('helloMessage', {} as helloMessage)
+interface helloMessage {
+  helloMessage: string,
+  updateMessage: () => {}
+}
+```
 
 
 

@@ -24,7 +24,8 @@ defineOptions({
   inheritAttrs: false
 })
 import { ElButton } from 'element-plus';
-import { ref, computed, useAttrs } from 'vue';
+import { ref, computed, useAttrs, inject } from 'vue';
+const { helloMessage, updateMessage } = inject('helloMessage', {} as helloMessage)
 // const props = defineProps(['sym'])
 // defineProps({
 //   sym: Boolean
@@ -33,6 +34,10 @@ const attrs = useAttrs()
 console.log(attrs)
 interface addButtonObj {
   num: number
+}
+interface helloMessage {
+  helloMessage: string,
+  updateMessage: () => {}
 }
 const props = defineProps<{
   sym?: boolean,

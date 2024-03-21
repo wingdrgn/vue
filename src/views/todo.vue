@@ -15,7 +15,17 @@
 </template>
 
 <script setup lang="ts" name="import">
-import { ref } from 'vue'
+import { ref, provide, readonly } from 'vue'
+const helloMessage = ref('hello')
+const updateMessage = () => {
+  helloMessage.value = 'unHello'
+}
+// provide(/* key */'helloMessage', /* value */
+// readonly(helloMessage))
+provide(/* key */'helloMessage', /* value */{
+  helloMessage,
+  updateMessage
+})
 const addButtonPost = ref({
   sym: true,
   obj: {
