@@ -241,6 +241,67 @@ mounted(el, binding, vnode, prevVnode) {}
 
 
 ## plugin
+plugin用于添加程序级功能
+```js
+app.use(myPlugin, {
+  //options
+})
+
+const myPlugin = {
+  install(app, options) {
+    // configure the app
+     app.config.globalProperties.$translate = () => {
+
+     }
+  }
+}
+```
+
+## transition
+元素进入或离开时的动画，**仅支持单个根元素**
+```js
+<Transition>
+  <p v-if="show">hello</p>
+</Transition>
+```
+```css
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+//active 用于定义过度时间，延迟，曲线
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+```
+
+命名转换 通过name
+```js
+<Transition name="fade">
+//[name]-enter-active
+```
+
+
+## keepalive
+在component动态切换时存储实例
+```js
+<KeepAlive :max="10">
+  <component :is="current"></component>
+</KeepAlive>
+
+import Add from '../components/add.vue'
+import InputComponent from '../components/input.vue'
+const current = ref(Add)
+```
+include/exclude 为其name属性 sfc的name为文件名
+```js
+<KeepAlive :max="10" include="add">
+//add.vue
+```
+
+缓存实例的生命周期
+onActivated, onDeactivated
 
 
 
