@@ -30,11 +30,21 @@
 </template>
 
 <script setup lang="ts">
-import {ref, Transition} from 'vue'
+import { ref, Transition } from 'vue'
+import { storeToRefs } from 'pinia'
 import { useMouse } from '../utils/mouse'
 import Add from '../components/add.vue'
 import InputComponent from '../components/input.vue'
+import { useMineStore } from '../store/mine'
 
+const mineStore = useMineStore()
+console.log(mineStore.count)
+
+//store是reactive包裹的 不需要.value
+//不能解构 破坏响应性 ❌const {count} = mineStore
+
+//可以用storeToRefs解构
+//const {getCount} = storeToRefs(mineStore)
 const { x, y } = useMouse()
 
 const show = ref(true)
