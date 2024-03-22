@@ -18,6 +18,14 @@
         <component :is="current"></component>
       </KeepAlive>
     </div>
+    <dir>
+      <div class="outer">
+        <h2>Vue Teleport Example</h2>
+        <div>
+          <MyModal />
+        </div>
+      </div>
+    </dir>
   </div>
 </template>
 

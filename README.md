@@ -303,6 +303,12 @@ include/exclude 为其name属性 sfc的name为文件名
 缓存实例的生命周期
 onActivated, onDeactivated
 
+## Teleport
+将组件的一部分传到dom之外
+```js
+<Teleport to="body"></Teleport>
+```
+
 
 
 问题：
